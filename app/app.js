@@ -45,6 +45,11 @@
       }
     };
   }]);
+  myApp.filter('length', function() {
+    return function(text) {
+      return ('' + (text || '')).length;
+    }
+  });
   myApp.component('heroDetail', {
     templateUrl:'heroDetail.html',
     controller: function HeroDetailController() {
