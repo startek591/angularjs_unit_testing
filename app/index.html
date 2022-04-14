@@ -7,7 +7,18 @@
   <title>Unit Testing for Angular JS Applications</title>
 </head>
 <body>
-  {{1+2}}
+  <p>Scope Inheritance Example</p>
+  <div>
+    <div ng-controller="MainController">
+      <p>Good {{timeOfDay}}, {{name}}!</p>
+      <div ng-controller="ChildControlller">
+        <p>Good {{timeOfDay}}, {{name}}!</p>
+        <div ng-controller="GrandChildController">
+          <p>Good {{timeOfDay}}, {{name}}!</p>
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="../node_modules/angular/angular.js"></script>
   <script src="../node_modules/angular-mocks/angular-mocks.js"></script>
   <script src="app.js"></script>
