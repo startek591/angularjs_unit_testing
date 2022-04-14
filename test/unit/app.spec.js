@@ -54,6 +54,19 @@
         expect(length('abc')).toEqual(3);
       });
     });
+    describe('Unit testing great quotes', function() {
+      var $compile, $rootScope;
+     beforeEach(inject(function(_$compile_, _$rootScope_) {
+       $compile = _$compile_;
+       $rootScope = _$rootScope_;
+     }));
+     it('Replaces the element with the appropiate content', function() {
+       var element = $compile("<a-great-eye></a-great-eye>")($rootScope);
+       $rootScope.$digest();
+
+       expect(element.html()).toContain("lidless, wreathed in flame, 2 times");
+     });
+    });
     describe('Scope Hierarchy', function(){
       beforeEach(inject(function($rootScope, $controller) {
         mainScope = $rootScope.$new();
