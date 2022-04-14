@@ -1,5 +1,5 @@
 (function(){
-  describe('Controller Testing', function(){
+  describe('Unit Testing', function(){
     beforeEach(module('myApp'));
     describe('MyController', function(){
       var $scope;
@@ -16,6 +16,30 @@
         expect($scope.spice).toBe('habanero');
       });
     });
+    describe('PasswordController', function(){
+      var $controller;
+      beforeEach(inject(function(_$controller_) {
+        $controller = _$controller_;
+      }));
+
+      describe('$scope.grade', function() {
+        var $scope, controller;
+        beforeEach(function(){
+          $scope = {};
+          controller = $controller('PasswordController', { $scope: $scope});
+        })
+        it('sets the strength to "strong" if the password length is > 8 chars', function(){
+          $scope.password = 'longerthaneightchars';
+          $scope.grade();
+          expect($scope.strength).toEqual('strong');
+        });
+        it('sets the strength to "weak" if the password length <3 chars', function() {
+          $scope.password = 'a';
+          $scope.grade();
+          expect($scope.strength).toEqual('weak');
+        })
+      })
+    })
     describe('Scope Hierarchy', function(){
       beforeEach(inject(function($rootScope, $controller) {
         mainScope = $rootScope.$new();

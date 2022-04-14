@@ -6,6 +6,19 @@
                      {"name":"habenero", "spiciness":"LAVA HOT!!"}];
     $scope.spice = "habanero";
   });
+  myApp.controller('PasswordController', function PasswordController($scope) {
+    $scope.password = '';
+    $scope.grade = function() {
+      var size = $scope.password.length;
+      if (size > 8) {
+        $scope.strength = 'strong';
+      } else if (size > 3) {
+        $scope.strength = 'medium';
+      } else {
+        $scope.strength = 'weak';
+      }
+    }
+  });
   myApp.controller('MainController', ['$scope', function($scope) {
     $scope.timeOfDay = 'morning';
     $scope.name = 'Nikki';
